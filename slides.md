@@ -1,346 +1,439 @@
 ---
 # try also 'default' to start simple
-theme: seriph
+theme: default
+layout: fact
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-class: 'text-center'
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
 # show line numbers in code blocks
-lineNumbers: false
+class: text-center
+lineNumbers: true
 # some information about the slides, markdown enabled
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  ## Clean Architecture in YNAB splitter
 ---
 
-# Welcome to Slidev
+## Clean Architecture by Example
+### Robin Suter
 
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
-
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
-
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+<img src="/clean-arch-book.jpeg" class="book" />
+<img src="/ynab-logo.png" class="ynab-logo" />
+<img src="/ynab-splitter-screenshot.png" class="ynab-splitter" />
+<img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" class="diagram" />
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-### Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div 
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
+  .book {
+    @apply absolute bottom-0 left-0 ml-15 mb-15;
+    transform: rotate(5deg);
+    height: 20vh;
   }
+  .ynab-logo {
+    @apply absolute top-0 right-0 mt-10 mr-20;
+    transform: rotate(3deg);
+    height: 15vh;
+  }
+  .ynab-splitter {
+    @apply absolute bottom-0 right-0 mr-15 mb-15;
+    transform: rotate(-7deg);
+    height: 23vh;
+  }
+
+  .diagram {
+    @apply absolute top-0 left-0 mt-10 ml-10;
+    transform: rotate(-5deg);
+    height: 15vh;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+</style>
+
+---
+
+# Agenda
+
+- Introduction to Clean Architecture
+- Implementing Clean Architecture
+  - Case Study "YNAB-Splitter"
+  - Code Demo
+  - Challenges / Discussion
+
+---
+
+# Clean Architecture
+- Combination of different architectural styles (Hexagonal Architecture, DCI, BCE)
+- Core Principles [^1]
+  - Independent of frameworks
+  - Testable
+  - Independent of the _UI_
+  - Independent of the _database_
+  - Independent of any _external agency_
+
+[^1]: [From Uncle Bob's Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+
+---
+
+## The Dependency Rule
+
+> Source code dependencies must point only inward, toward higher-level dependencies
+
+<img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg"/>
+
+
+<style>
+  img {
+    height: 40vh;
+  }
+</style>
+
+---
+
+## The Framework is a detail
+- Your core business logic should be _independent_ of any
+  - Dependency Injection Framework (e.g. Spring)
+  - Database Mapper
+  - REST Framework
+  - etc.
+
+<img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg"/>
+
+<style>
+  img {
+    height: 40vh;
+    @apply absolute bottom-0 right-0 pr-16 pb-16;
+  }
+</style>
+
+---
+# Implementing Clean Architecture
+
+- Clean Architecture gives us principles, but no clear guidance for implementation
+- We are looking at one possible approach in the context of a web application
+- Thanks to Christoph Buchendorfer / Oliver Zihler
+
+---
+## Case Study: YNAB Splitter
+
+- YNAB ("You need a Budget")[^1] is a personal financing and budgeting tool
+- All purchases and transactions are recorded and money is budgeted into categories
+  - All transactions have to be categorized
+
+<img src="/ynab-logo.png" class="logo" />
+
+<div class="flex flex-row justify-around mt-5">
+  <img src="/ynab-website.png" class="website" />
+  <img src="/ynab_desktop.png" class="desktop" />
+</div>
+
+<style>
+  .logo {
+    height: 12vh;
+    @apply absolute top-0 right-0 mt-10 mr-10;
+  }
+  .desktop {
+    height: 25vh;
+  }
+  .website {
+    height: 25vh;
+  }
+</style>
+
+
+[^1]: [YNAB website](https://www.youneedabudget.com/)
+
+---
+
+## The Problem
+
+- My wife and I are using separate YNAB budgets with the same credit card
+- Transactions have to be split between us
+- Both budgets need to be kept in sync manually
+
+<img src="/ynab-journey-orig.svg"/>
+
+<style>
+  img {
+    @apply absolute bottom-0 right-0 mr-20 mb-5;
+    height: 50vh
+  }
+</style>
+
+---
+
+## The Solution: YNAB Splitter
+
+- Provide a web application where we can categorize and split transactions
+- Adjust both of our budgets to keep them in sync
+- Provide an audit log to keep track of the history
+
+<img src="/ynab-journey-splitter.svg"/>
+
+<style>
+  img {
+    @apply absolute bottom-0 text-center mb-5;
+    height: 35vh
+  }
+</style>
+
+---
+layout: fact
+---
+
+## YNAB Splitter Demo
+
+---
+
+## YNAB-Splitter with Clean Architecture
+
+- Split application into use cases
+  - `List Transactions`
+  - `List Categories for User`
+  - `Approve Transaction`
+  - `Get Audit Log`
+
+- Implement every use case in isolation using "Ports and Adapters"
+
+---
+
+## Ports and Adapters
+
+<object type="image/svg+xml" data="/ports_adapters.drawio.svg"></object>
+
+<style>
+  object {
+    @apply mt-10;
+    height: 31vh;
+  }
+</style>
+---
+
+## Ports and Adapters
+<object type="image/svg+xml" data="/ports_adapters_classes.drawio.svg"></object>
+
+
+---
+
+## Ports and Adapters
+<object type="image/svg+xml" data="/ports_adapters_classes-flow.drawio.svg"></object>
+
+---
+
+## Defining a "Use Case"
+
+- Defining the "port" interface
+
+```kotlin {}
+interface IApproveTransaction {
+    fun executeWith(input: ApproveTransactionInput, presenter: ApproveTransactionPresenter)
 }
-</script>
+```
 
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+- Defining adapters
+```kotlin {all|6}
+interface ApproveTransactionPresenter {
+    fun present(result: ApproveTransactionResult)
+}
 
-[Learn More](https://sli.dev/guide/animations.html#motion)
+interface ReadTransactionsRepository {
+    fun getTransaction(id: String): Transaction?
+}
+```
 
+<arrow v-after x1="600" y1="400" x2="460" y2="330" color="#6895FD" width="3" />
+<div v-after class="annotation">Domain Entity</div>
+
+<style>
+  .annotation {
+    @apply absolute top-0 left-0;
+    margin-top: 405px;
+    margin-left: 605px;
+  }
+</style>
+
+---
+
+## Implementing a "Use Case"
+
+- Implementing the "use case"
+```kotlin {all|2-6|8|10}
+class ApproveTransaction(
+        private val readTransactionsRepository: ReadTransactionsRepository,
+        private val saveTransactionRepository: SaveTransactionRepository,
+        private val categoriesRepository: ReadCategoriesRepository,
+        // ...
+) : IApproveTransaction {
+   override fun executeWith(input: ApproveTransactionInput, presenter: ApproveTransactionPresenter) {
+          val transactions = loadTransactions(input);
+          val auditLogId = approveTransactions(transactions);
+          presenter.present(ApproveTransactionResult(auditLogId))
+    }
+}
+```
+
+<arrow v-click="1" x1="750" y1="180" x2="650" y2="180" color="#6895FD" width="3" />
+<div v-click="1" class="annotation first">Injected Dependencies</div>
+
+<arrow v-click="2" x1="100" y1="350" x2="200" y2="260" color="#6895FD" width="3" />
+<div v-click="2" class="annotation second">Domain Entities</div>
+
+<arrow v-click="3" x1="350" y1="350" x2="280" y2="300" color="#6895FD" width="3" />
+<div v-click="3" class="annotation third">Presenting as side effect, no return!</div>
+
+<style>
+  .annotation {
+    @apply absolute top-0 left-0;
+  }
+  .first {
+    margin-top: 170px;
+    margin-left: 755px;
+  }
+  .second {
+    margin-left: 50px;
+    margin-top: 355px;
+  }
+  .third {
+    margin-left: 355px;
+    margin-top: 355px;
+  }
+</style>
+
+---
+
+## Implementing a "Use Case" (II)
+
+- Implementing the adapters
+```kotlin {all|3|4}
+class YnabTransactionRepository(private val transactionsApi: TransactionsApi) : ReadTransactionsRepository {
+    override fun getTransaction(id: String): Transaction? {
+          val transactionResponse: transactionsApi.getTransactionById(id)
+          return transactionResponse.transaction.toTransaction()
+    }
+}
+```
+
+- Implementing the presenter
+
+```kotlin {all|6}
+class RestApproveTransactionPresenter : ApproveTransactionPresenter {
+
+    var presentation: ApproveTransactionResultDocument? = null
+
+    override fun present(result: ApproveTransactionResult) {
+        presentation = ApproveTransactionResultDocument(result)
+    }
+}
+```
+
+<arrow v-click="1" x1="750" y1="180" x2="650" y2="170" color="#6895FD" width="3" />
+<div v-click="1" class="annotation first">YNAB object</div>
+
+<arrow v-click="2" x1="740" y1="230" x2="580" y2="190" color="#6895FD" width="3" />
+<div v-click="2" class="annotation second">Mapping to Domain Entity</div>
+
+<arrow v-click="2" x1="740" y1="400" x2="580" y2="380" color="#6895FD" width="3" />
+<div v-click="2" class="annotation third">Mapping to REST object</div>
+
+<style>
+  .annotation {
+    @apply absolute top-0 left-0;
+  }
+  .first {
+    margin-left: 760px;
+    margin-top: 170px;
+  }
+  .second {
+    margin-left: 750px;
+    margin-top: 230px;
+  }
+
+  .third {
+    margin-left: 750px;
+    margin-top: 390px;
+  }
+</style>
+
+---
+
+## Calling a "Use Case"
+
+```kotlin {all|1-3|10-17|19|21}
+@RestController
+@RequestMapping("/api/v1")
+class YnabSplitterController(private val readTransactionRepository: ReadTransactionsRepository, ...) {
+
+    @PostMapping("/transactions/{id}/approveSplit")
+    fun approveSplitTransaction(@PathVariable("id") transactionId: String, 
+                                @RequestBody(required = true) splitRequest: SplitTransactionRequest
+    ): ApproveTransactionResultDocument {
+
+        val presenter = RestApproveTransactionPresenter()
+
+        val input = ApproveTransactionInput(splitRequest.transactionIds, splitRequest.transactionSplit, ...)
+
+        val approveTransaction: IApproveTransaction = ApproveTransaction(
+            readTransactionRepository, saveTransactionRepository,
+            readCategoriesRepository, // ...
+        )
+
+        approveTransaction.executeWith(input, presenter)
+
+        return presenter.presentation
+    }
+}
+```
+
+---
+layout: fact
+---
+
+## Code Demo
+
+<!-- Show screaming Architecture, Mappers, Adapter, Injection -->
+
+---
+
+# Learnings
+- Application becomes highly adaptable and well maintainable
+  - Easily change to different database
+  - Put in security frameworks without touching the core
+- Easy tests with Mocks and "in-memory" implementations
+- Lots of mapping to different data structures
+  - Kotlin makes this a breeze with `data classes` and `extension functions`
+
+<div v-click>
+
+```kotlin
+data class TransactionDocument(
+        val id: String,
+        val actor: SplitterActorDocument,
+        val date: LocalDate,
+        val amount: Long,
+        val category: CategoryDocument?,
+        val memo: String?,
+        val payee: String?
+)
+fun Transaction.toDocument(): TransactionDocument =
+    TransactionDocument(id, actor.toDocument(), date.toJavaLocalDate(), amount, category?.toDocument(),
+                        memo, payee)
+}
+```
 </div>
 
 ---
 
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
+# Challenges
+- Lots of boilerplate for simple use cases like `List Transactions`
+- What about "nested" use cases?
+  - We could have use cases "calling" other use cases
+  - This would make testability much harder
+  - Instead: Try calling multiple use cases from the outside (e.g. REST controller)
 
 ---
 
-# Diagrams
+# Questions?
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.9}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+- Check out the Code on Github: https://github.com/Excape/ynab-splitter
+- Link to these slides: https://github.com/Excape/clean-architecture-talk

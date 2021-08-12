@@ -108,6 +108,7 @@ info: |
 </style>
 
 ---
+
 # Implementing Clean Architecture
 
 - Clean Architecture gives us principles, but no clear guidance for implementation
@@ -115,6 +116,7 @@ info: |
 - Thanks to Christoph Buchendorfer / Oliver Zihler
 
 ---
+
 ## Case Study: YNAB Splitter
 
 - YNAB ("You need a Budget")[^1] is a personal financing and budgeting tool
